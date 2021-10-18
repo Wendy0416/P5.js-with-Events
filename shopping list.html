@@ -1,0 +1,160 @@
+   <!DOCTYPE html>
+<html>
+<head>
+          <script src="p5.min.js"></script> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+ <body bgcolor= #f0dde6>
+  <style type="text/css">
+      h1{position: center;top: 20px;}
+    h1{color: black}
+    h1{font-size: 60px;}
+    p{font-size:20px;}
+ 
+     h2{margin-top: 40px;}
+     h2{color: white}
+    h2{font-size: 20px;}
+    h3{font-size: 15px;}
+    h3{color: #831d8c}
+ 
+    h3{ margin-top: 39vw;}
+    h3{ margin-left: 41.5vw;}
+      </style>
+      </head>
+      <body>
+        <button onclick="openFullscreen();">Open Fullscreen</button>
+<button onclick="closeFullscreen();">Close Fullscreen</button>
+
+
+            <h1 align="center">Grocery list</h1>
+            <p align="center">Your <span class="intro__span">personal</span> grocery list</p>  
+              
+            <div style="padding-left: 40vw">
+ <ul>
+                  
+                <input type="checkbox" id="vehicle1" name="vehicle1" value="1"><label for="vehicle1"> mango</label><br>
+          <input type="checkbox" id="vehicle1" name="vehicle1" value="4">
+  <label for="vehicle1"> toufu</label><br>        <input type="checkbox" id="vehicle1" name="vehicle1" value="2">
+  <label for="vehicle1"> banana</label><br>        <input type="checkbox" id="vehicle1" name="vehicle1" value="3">
+  <label for="vehicle1"> cat</label><br>
+           
+
+
+                  
+               
+
+                </ul>
+
+          </div>
+
+
+
+  <script>
+/* Fullscreen https://www.w3schools.com/tags/att_input_type_checkbox.asp */
+var elem = document.documentElement;
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+}
+
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) { /* Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* End */
+    document.msExitFullscreen();
+  }
+}
+
+</script>
+
+<script>
+var input;
+var button;
+var greeting;
+var elem;
+var checkbox;
+
+function setup() {
+ 
+    createCanvas(1400, 200);
+    background("#fcba03");
+
+    elem = createColorPicker();
+    console.log( elem.value() );
+    elem.value("#831d8c");
+    console.log( elem.value() );
+
+  
+    input = createInput();
+    input.position(540, 400);
+  
+    button = createButton('buy');
+    button.position(input.x + input.width, 400);
+    button.mousePressed(greet);
+  
+    greeting = createElement('h2', 'Use your list to draw!');
+    greeting.position(540, 320);
+  
+    textAlign(CENTER);
+    textSize(50);
+
+    // stroke(255);
+
+  strokeWeight(7);
+
+    checkbox2 = createCheckbox("change drawing color");
+
+
+  }
+let value = 0;
+function draw() {
+  fill(value);
+  rect(50, 50, 75, 75);
+}
+
+function mouseClicked() {
+  if (value === 0) {
+    value = 214, 131, 131;
+  } else {
+    value = 0;
+  }
+
+}
+ 
+  function greet() {
+    const name = input.value();
+    greeting.html('What else to buy?');
+    input.value('');
+  
+    for (let i = 0; i < 500; i++) {
+      push();
+      fill(elem.value());
+      translate(random(width), random(height));
+      rotate(random(2* PI));
+      text(name, 0, 0);
+      pop();
+    }
+
+
+l
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+    }
+
+
+</script>
+
+
+
+</script>
+</body>
+</html>
